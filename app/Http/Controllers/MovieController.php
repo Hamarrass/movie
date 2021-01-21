@@ -16,12 +16,12 @@ class MovieController extends Controller
         //$this->middleware(MovieMiddleware::class);
     }
 
-    //show all  Movie
+    //show all  Movies
     public function all()
     {
 
-
-       //$movies = DB::connection('mysql2')->select('select * from actors');
+        //if you  want get data from an other database just  use this method
+     // $movies = DB::connection('mysql2')->select('select * from actors');
 
         return response()->json(Movie::all());
     }
@@ -73,7 +73,7 @@ class MovieController extends Controller
         return response($movies, 200);
     }
 
-    //list the films of an actor by his {id}
+    //list the films of an actor and  his {id}
     public function actorMovies($actor ,Request $request){
 
 
