@@ -14,5 +14,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call('UsersTableSeeder');
+        /*to do  that excute this command
+        php artisan db:seed
+        */
+        if($this->command->confirm("do you want to refresh the database", true)){
+            $this->command->call("migrate:refresh");
+            $this->command->info("database was refreshed!");
+        }
+        $this->call([
+                   UsersTableSeeder::class
+                   ]);
     }
 }

@@ -15,10 +15,10 @@ class MovieMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if($request->header('token') != env('CLIENT_SECRET')){
+       /* if($request->header('token') != env('CLIENT_SECRET')){
             //unauthorized 40
             return response()->json('unauthorized',401);
-          };
+          };*/
           return $next($request);
     }
 }

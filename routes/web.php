@@ -18,7 +18,7 @@ $router->get('/', function () use ($router) {
 });
 
 //route Movie
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api' ,'middleware'=>'client'], function () use ($router) {
     $router->get('movies',  ['uses' => 'MovieController@all']);
 
     $router->post('movie/create', ['uses' => 'MovieController@create']);

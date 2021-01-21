@@ -13,7 +13,7 @@ class MovieController extends Controller
 
     public function __construct()
     {
-        $this->middleware(MovieMiddleware::class);
+        //$this->middleware(MovieMiddleware::class);
     }
 
     //show all  Movie
