@@ -70,6 +70,7 @@ $app->configure('auth');
 */
 
 $app->configure('app');
+//$app->configure('database');
 
 
 /*

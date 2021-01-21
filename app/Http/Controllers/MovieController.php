@@ -31,7 +31,6 @@ class MovieController extends Controller
     //create  new Movie
     public function create(Request $request)
     {
-
         $actors=serialize($request->actors);
         $movie = new Movie();
         $movie->name   = $request->name;
