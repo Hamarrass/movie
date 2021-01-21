@@ -19,6 +19,10 @@ class MovieController extends Controller
     //show all  Movie
     public function all()
     {
+
+
+       //$movies = DB::connection('mysql2')->select('select * from actors');
+
         return response()->json(Movie::all());
     }
 
