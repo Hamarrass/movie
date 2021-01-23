@@ -4,8 +4,8 @@
 return [
 
     'default' => env('DB_CONNECTION', 'mysql'),
-
-   'connections' => [
+    'migrations' => 'migrations',
+    'connections' => [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST'),
