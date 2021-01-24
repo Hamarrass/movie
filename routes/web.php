@@ -31,6 +31,6 @@ $router->group(['prefix' => 'api' ,'middleware'=>'client'], function () use ($ro
 
     $router->get('movie/year/{year}', ['uses' => 'MovieController@moviesByYear']);
 
-    $router->get('movie/actor/{actor}', ['uses' => 'MovieController@actorMovies']);
+    $router->get('movie/actor/{id}', ['uses' => 'MovieController@actorMovies']);
 
   });

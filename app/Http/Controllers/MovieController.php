@@ -35,7 +35,10 @@ class MovieController extends Controller
     //create  new Movie
     public function create(Request $request)
     {
-        $actors=serialize($request->actors);
+        $req= implode(",",$request->actors);
+        $actors=DB::connection('mysql2')->select("select id ,name from actors where id in ($req)  ");
+        $actors=json_encode($actors);
+        $actors=serialize($actors);
         $movie = new Movie();
         $movie->name   = $request->name;
         $movie->year   = $request->year ;
@@ -49,7 +52,10 @@ class MovieController extends Controller
     public function update($id, Request $request)
     {
 
-        $actors=serialize($request->actors);
+        $req= implode(",",$request->actors);
+        $actors=DB::connection('mysql2')->select("select id ,name from actors where id in ($req)  ");
+        $actors=json_encode($actors);
+        $actors=serialize($actors);
         $movie = Movie::findOrFail($id);
         $movie->name   = $request->name;
         $movie->year   = $request->year ;
@@ -74,7 +80,7 @@ class MovieController extends Controller
     }
 
     //list the films of an actor and  his {id}
-    public function actorMovies($actor ,Request $request){
+    public function actorMovies($id){
 
 
         $movies = Movie::all();
@@ -82,16 +88,19 @@ class MovieController extends Controller
 
         foreach($movies as $m) {
 
-            $actors = unserialize($m->actors);
+            $actors = json_decode(unserialize($m->actors));
 
             foreach($actors as $a) {
-                if($a["id"] == $actor) {
+
+                if($a->id == $id) {
                     $moviesActor[] = $m;
                 }
             }
         }
 
-        return response($moviesActor, 200);
+       // dd(response()->json($moviesActor));
+        return response()->json($moviesActor);
+        //return response($moviesActor, 200);
 
     }
 
